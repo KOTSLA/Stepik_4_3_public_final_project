@@ -4,6 +4,7 @@ from selenium.common.exceptions import NoAlertPresentException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
+from locators.locators import BasePageLocators
 
 class BasePage:
     def __init__(self, browser, url, timeout=10):
@@ -13,6 +14,22 @@ class BasePage:
 
     def open(self):
         self.browser.get(self.url)
+
+    def go_to_login_page(self):
+        link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
+        link.click()
+
+    def should_be_login_link(self):
+        assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"
+        print("Login link is OK")
+
+    def should_be_bucket_button(self):
+        assert self.is_element_present(*BasePageLocators.BUCKET_BUTTON_LINK), "Button is not presented"
+        print("Bucket button is OK")
+
+    def go_to_bucket_page(self):
+        bucket_button = self.browser.find_element(*BasePageLocators.BUCKET_BUTTON_LINK)
+        bucket_button.click()
 
     # is_element_present, method
     def is_element_present(self, how, what):

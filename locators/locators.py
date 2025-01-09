@@ -1,8 +1,11 @@
 from selenium.webdriver.common.by import By
 
+class BasePageLocators():
+    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+    LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
+    BUCKET_BUTTON_LINK = (By.XPATH, "//a[@class='btn btn-default']")
 
 class MainPageLocators:
-    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
     ADD_BASKET_BUTTON = (By.XPATH, "//*[@id='add_to_basket_form']/button")
 
 class LoginPageLocators:
@@ -15,3 +18,7 @@ class ProductPageLocators:
     PRODUCT_NAME = (By.XPATH, "//*[@id='content_inner']/article/div[1]/div[2]/h1")
     PRODUCT_PRICE = (By.XPATH, "//p[@class='price_color']")
     PRICE_BUCKET_MESSAGE = (By.XPATH, "//*[@id='messages']/div[3]/div/p[1]")
+
+class BucketPageLocators:
+    PROCEED_BUTTON = (By.XPATH, "//a[@class='btn btn-lg btn-primary btn-block']")
+    TEXT_YOU_BASKET_IS_EMPTY = (By.XPATH, "//*[@id='content_inner']/p")

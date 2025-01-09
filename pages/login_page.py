@@ -12,6 +12,7 @@ class LoginPage(BasePage):
         # Check id url is correct
         current_url = self.browser.current_url
         assert "login" in current_url, f"Expected 'login' to be in URL, but got {current_url}"
+        print("Login page is OPEN")
 
     def should_be_login_form(self):
         # check if login form is presented

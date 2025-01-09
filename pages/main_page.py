@@ -6,13 +6,6 @@ from selenium.common.exceptions import NoSuchElementException
 from locators.locators import ProductPageLocators
 
 class MainPage(BasePage):
-    def should_be_login_link(self):
-        assert self.is_element_present(*MainPageLocators.LOGIN_LINK), "Login link is not presented"
-
-    def go_to_login_page(self):
-        login_link = self.browser.find_element(*MainPageLocators.LOGIN_LINK)
-        login_link.click()
-
     def should_be_add_to_cart_button(self):
         """Check if button "Add to card" exist."""
         try:
