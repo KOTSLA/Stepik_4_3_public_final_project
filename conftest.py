@@ -22,6 +22,7 @@ def browser(request, language):
     # browser = None
     if browser_name == "chrome":
         options = Options()
+        options.add_argument("--start-fullscreen")
         options.add_experimental_option('prefs', {'intl.accept_languages': language})
         browser = webdriver.Chrome(options=options)
         print("\nstart chrome browser for test..")
