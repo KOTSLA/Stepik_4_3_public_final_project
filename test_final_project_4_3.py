@@ -7,16 +7,19 @@ from pages.login_page import LoginPage
 from pages.product_page import ProductPage
 from urls import urls
 
-@pytest.mark.skip(reason="Test is ready")
-@pytest.mark.parametrize('link', urls)
-def test_guest_can_go_to_login_page(browser,link):
-    page = MainPage(browser, link)
-    page.open()
-    page.go_to_login_page()
-    login_page = LoginPage(browser, browser.current_url)
-    login_page.should_be_login_page()
+# @pytest.mark.skip(reason="Test is ready")
+@pytest.mark.login_guest
+class TestLoginFromMainPage():
+    @pytest.mark.parametrize('link', urls)
+    def test_guest_can_go_to_login_page(self, browser,link):
+        page = MainPage(browser, link)
+        page.open()
+        page.go_to_login_page()
+        login_page = LoginPage(browser, browser.current_url)
+        login_page.should_be_login_page()
+        time.sleep(5)
 
-@pytest.mark.skip(reason="Test is ready")
+# @pytest.mark.skip(reason="Test is ready")
 @pytest.mark.parametrize('link', urls)
 def test_guest_can_add_product_to_basket(browser, link):
     page = MainPage(browser, link)
@@ -57,7 +60,7 @@ def test_message_disappeared_after_adding_product_to_basket(browser, link):
     product_page = ProductPage(browser, browser.current_url)
     product_page.should_not_be_success_message_with_disappeared()
 
-# @pytest.mark.skip(reason="Test is Ok")
+@pytest.mark.skip(reason="Test is Ok")
 @pytest.mark.parametrize('link', urls)
 def test_guest_cant_see_product_in_basket_opened_from_main_page(browser, link):
     page = MainPage(browser, link)
