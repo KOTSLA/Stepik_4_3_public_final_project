@@ -9,7 +9,7 @@ from urls import urls
 
 # @pytest.mark.skip(reason="Test is ready")
 @pytest.mark.login_guest
-class TestLoginFromMainPage():
+class TestLoginFromMainPage:
     @pytest.mark.parametrize('link', urls)
     def test_guest_can_go_to_login_page(self, browser,link):
         page = MainPage(browser, link)
@@ -40,9 +40,11 @@ def test_guest_cant_see_success_message_after_adding_product_to_basket(browser, 
     page.go_to_product_page()
     page.solve_quiz_and_get_code()
     product_page = ProductPage(browser, browser.current_url)
+    time.sleep(3)
     product_page.should_not_be_success_message()
 
-@pytest.mark.skip(reason="Test is Ok")
+
+# @pytest.mark.skip(reason="Test is Ok")
 @pytest.mark.parametrize('link', urls)
 def test_guest_cant_see_success_message(browser, link):
     page = MainPage(browser, link)
@@ -60,7 +62,7 @@ def test_message_disappeared_after_adding_product_to_basket(browser, link):
     product_page = ProductPage(browser, browser.current_url)
     product_page.should_not_be_success_message_with_disappeared()
 
-@pytest.mark.skip(reason="Test is Ok")
+# @pytest.mark.skip(reason="Test is Ok")
 @pytest.mark.parametrize('link', urls)
 def test_guest_cant_see_product_in_basket_opened_from_main_page(browser, link):
     page = MainPage(browser, link)

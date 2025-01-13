@@ -11,12 +11,6 @@ class ProductPage(BasePage):
         self.item_name_is_similar_selected_item_name()
         self.item_price_is_similar_price_in_bucket()
 
-    # def should_be_login_url(self):
-    #     # Check id url is correct
-    #     current_url = self.browser.current_url
-    #     assert "login" in current_url, f"Expected 'login' to be in URL, but got {current_url}"
-
-
     def should_be_success_massage_about_include_in_bucket(self):
         """Check if message 'has been added to your basket.' is enabled."""
         WebDriverWait(self.browser, 5).until(
@@ -71,8 +65,3 @@ class ProductPage(BasePage):
     def should_not_be_success_message_with_disappeared(self):
         assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE_FULL), \
         "Success message is not disappeared"
-
-    #
-    # def should_be_register_form(self):
-    #     # check if registration form is presented
-    #     assert self.is_element_present(*LoginPageLocators.REGISTER_BUTTON), "Register form is not presented"
