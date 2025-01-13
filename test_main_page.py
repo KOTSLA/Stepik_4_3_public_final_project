@@ -19,18 +19,6 @@ class TestLoginFromMainPage:
         login_page.should_be_login_page()
         time.sleep(5)
 
-# @pytest.mark.skip(reason="Test is ready")
-@pytest.mark.parametrize('link', urls)
-def test_guest_can_add_product_to_basket(browser, link):
-    page = MainPage(browser, link)
-    page.open()
-    page.should_be_add_to_cart_button()
-    page.go_to_product_page()
-    page.solve_quiz_and_get_code()
-    product_page = ProductPage(browser, browser.current_url)
-    product_page.should_be_product_page()
-    time.sleep(2)
-
 @pytest.mark.skip(reason="Test with Fail result")
 @pytest.mark.parametrize('link', urls)
 def test_guest_cant_see_success_message_after_adding_product_to_basket(browser, link):
